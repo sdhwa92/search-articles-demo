@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private _apiBaseUrl = 'http://hn.algolia.com/api/v1/'
+  private _apiBaseUrl = 'https://hn.algolia.com/api/v1/'
 
   constructor(private http:HttpClient) { }
 
