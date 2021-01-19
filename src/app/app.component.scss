@@ -1,6 +1,11 @@
 #app {
   .app-title__container {
     text-align: center;
+
+    h5 {
+      color: #989898;
+      font-weight: 600;
+    }
   }
 
   .spinner__container {

@@ -3,7 +3,8 @@
   <div class="container">
     <div class="row row justify-content-center mt-5">
       <div class="col-12 app-title__container">
-        <h1>{{title}}</h1>
+        <h1>{{title | titlecase}}</h1>
+        <h5>Developed by Daehwa Seo</h5>
       </div>
     </div>
     <div class="row justify-content-center mt-5">
@@ -33,7 +34,8 @@
                 <small>{{item.created_at | dateTimeFormat}}</small>
               </div>
               <div class="item-meta-data">
-                <span class="badge badge-secondary">{{item.points}} points</span>
+                <span class="badge" 
+                      [ngClass]="{'badge-secondary': item.points <= 100, 'badge-warning':(item.points > 100 && item.points <= 1000), 'badge-danger': item.points > 1000 }">{{item.points}} points</span>
                 <small>by {{item.author}}</small>
               </div>
             </a>
