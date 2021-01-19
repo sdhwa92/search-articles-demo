@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row row justify-content-center mt-5">
       <div class="col-12 app-title__container">
-        <h1>{{title | titlecase}}</h1>
+        <h1>{{title | uppercase}}</h1>
         <h5>Developed by Daehwa Seo</h5>
       </div>
     </div>
@@ -27,25 +27,32 @@
     <div class="row d-flex justify-content-center mt-5">
       <div class="col col-lg-10 col-md-10 col-sm-12 col-xs-12">
         <div class="list-group">
-          <div *ngIf="( result$ | async ) as result; else loading">
-            <a *ngFor="let item of result.hits" href="{{item.url}}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{item.title}}</h5>
-                <small>{{item.created_at | dateTimeFormat}}</small>
+          <ng-container *ngIf="( result$ | async ) as result; else loading">
+            <ng-container *ngIf="result.nbHits > 0; else noresults" >
+              <a *ngFor="let item of result.hits" href="{{item.url}}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{item.title ? item.title : 'N/A'}}</h5>
+                  <small>{{item.created_at | dateTimeFormat}}</small>
+                </div>
+                <div class="item-meta-data">
+                  <span class="badge" 
+                        [ngClass]="{'badge-secondary': item.points <= 100, 'badge-warning':(item.points > 100 && item.points <= 1000), 'badge-danger': item.points > 1000 }">{{item.points ? item.points : 0}} points</span>
+                  <small>by {{item.author}}</small>
+                </div>
+              </a>
+            </ng-container>
+            <ng-template #noresults>
+              <div class="no-results__container">
+                <h3>No Results Found</h3>
               </div>
-              <div class="item-meta-data">
-                <span class="badge" 
-                      [ngClass]="{'badge-secondary': item.points <= 100, 'badge-warning':(item.points > 100 && item.points <= 1000), 'badge-danger': item.points > 1000 }">{{item.points}} points</span>
-                <small>by {{item.author}}</small>
-              </div>
-            </a>
-          </div>
+            </ng-template>
+          </ng-container>
         </div>
       </div>
     </div>
 
     <div *ngIf="( result$ | async ) as result" class="row d-flex justify-content-between mt-5 mb-5">
-      <div class="col-12 pagination__container">
+      <div *ngIf="result.nbPages > 0" class="col-12 pagination__container">
         <button type="button" 
                 class="btn btn-secondary btn-sm" 
                 [disabled]="result.page === 0"
