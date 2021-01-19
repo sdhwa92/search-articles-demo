@@ -22,7 +22,7 @@ export class ApiService {
 
   public getSearchResults(keyword = '', page = 0, hitsPerPage = 10, tags = 'story'): Observable<Hit>
   {
-    console.log('getSearchResults');
+    // console.log('getSearchResults');
     let queryString = '';
 
     if (!!keyword)
