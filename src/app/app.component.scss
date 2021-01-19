@@ -1,0 +1,36 @@
+#app {
+  .app-title__container {
+    text-align: center;
+  }
+
+  .spinner__container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .list-group {
+    .list-group-item {
+      small {
+        color: #989898;
+      }
+
+      .item-meta-data {
+        small {
+          font-size: 70%;
+          font-weight: 400;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .pagination__container {
+    text-align: center;
+    button {
+      min-width: 100px;
+    }
+    span {
+      margin: 0 40px;
+    }
+  }
+}
