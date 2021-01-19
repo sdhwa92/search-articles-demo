@@ -1,5 +1,3 @@
-import { ItemList } from './models/item-list';
-import { Hit } from './models/hit';
 import { ApiService } from './services/api.service';
 import { Observable } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
