@@ -13,3 +13,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Demo Data
 
 This project uses data retrieved via the [Hacker News's API](https://hn.algolia.com/api)
+
+## Demo Link
+
+[Demo](https://sdhwa92.github.io/search-articles-demo/)
